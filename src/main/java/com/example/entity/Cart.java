@@ -1,10 +1,14 @@
 package com.example.entity;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.util.*;
 
 /**
  * Created by tzurc on 4/15/2017.
  */
+@Component
 public class Cart implements List<Book> {
 
     List<Book> books;

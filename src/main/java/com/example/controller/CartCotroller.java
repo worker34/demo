@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.entity.Book;
+import com.example.entity.Cart;
 import com.example.entity.User;
 import com.example.facade.CartFacade;
 import com.example.repository.BookRepository;
@@ -31,15 +32,15 @@ public class CartCotroller {
     @Autowired
     CartFacade cartFacade;
 
+    @Autowired
+    Cart cart;
+
     @RequestMapping("/addToCard/{id}")
     @Secured({"ADMIN", "USER"})
     public String addToCard(@PathVariable("id")long id, Model model, HttpServletRequest request){
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username = user.getUsername();
-        User usr = userRepository.findUserByUsername(username);
-
         System.out.println("From addToCard() Controller! bookID: " + id);
         Book addBook = bookRepository.findBookById(id);
+        cart.add(addBook);
         model.addAttribute("book", addBook);
         return "view";
     }
@@ -47,9 +48,7 @@ public class CartCotroller {
     @RequestMapping("/viewCart")
     @Secured({"ADMIN", "USER"})
     public String cart(Model model){
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username = user.getUsername();
-        model.addAttribute("cart", userRepository.findUserByUsername(username).getCart());
+        model.addAttribute("cart", cartFacade.getCart());
         return "cart";
     }
 }
