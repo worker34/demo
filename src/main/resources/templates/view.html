@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Book</title>
+</head>
+<body>
+    <h2>View Book!</h2>
+    <div>
+        <a th:href="@{'/addToCard/' + ${book.id}}">Add To Card</a>
+    </div>
+    <div>
+        <a th:href="@{'/viewCart'}">View Cart</a>
+    </div>
+    <table>
+        <tr>
+            <td><label>Title</label></td>
+            <input type="hidden" th:field="${book.id}" />
+            <td th:text="${book.name}"></td>
+        </tr>
+        <tr>
+            <td><label>Author</label></td>
+            <td th:text="${book.author}"></td>
+        </tr>
+        <tr>
+            <td><label>Pages</label></td>
+            <td th:text="${book.publisher}"></td>
+        </tr>
+        <tr>
+            <td><label>Publisher</label></td>
+            <td th:text="${book.publisher}"></td>
+        </tr>
+        <tr>
+            <td><label>Year</label></td>
+            <td th:text="${book.year}"></td>
+        </tr>
+        <tr>
+            <td><label>ISBN</label></td>
+            <td th:text="${book.isbn}"></td>
+        </tr>
+        <tr>
+            <td><label>Description</label></td>
+            <td th:text="${book.description}"></td>
+        </tr>
+    </table>
+</body>
+</html>

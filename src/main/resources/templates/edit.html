@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Update Book</title>
+	</head>
+	<body>	
+		<form th:action="@{'/edit/'+ ${book.id}}" th:object="${book}" th:method="PUT">
+		    <table>
+		        <tr>
+		            <td><label>Title</label></td>
+					<input type="hidden" th:field="*{id}" />
+		            <td><input type="text" th:field="*{name}" /></td>
+		        </tr>
+		        <tr>
+		            <td><label>Author</label></td>
+		            <td><input type="text" th:field="*{author}" /></td>
+		        </tr>
+		         <tr>
+		            <td><label>Pages</label></td>
+		            <td><input type="text" th:field="*{pages}" /></td>
+		        </tr>
+		         <tr>
+		            <td><label>Publisher</label></td>
+		            <td><input type="text" th:field="*{publisher}" /></td>
+		        </tr>
+		         <tr>
+		            <td><label>Year</label></td>
+		            <td><input type="text" th:field="*{year}" /></td>
+		        </tr>
+		         <tr>
+		            <td><label>ISBN</label></td>
+		            <td><input type="text" th:field="*{isbn}" /></td>
+		        </tr>
+		         <tr>
+		            <td><label>Description</label></td>
+		            <td><input type="text" th:field="*{description}" /></td>
+		        </tr>
+		        <tr>
+		            <td></td>
+		            <td><button type="submit">Update</button></td>
+		        </tr>
+		    </table>
+		</form>
+	</body>
+</html>
