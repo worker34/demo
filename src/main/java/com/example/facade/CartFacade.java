@@ -1,6 +1,6 @@
 package com.example.facade;
 
-import com.example.entity.Book;
+import com.example.entity.Journal;
 import com.example.entity.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,11 +19,11 @@ public class CartFacade {
 
 //    return cart of the authenticated user
     public Cart getCart(){
-        Book book = new Book();
-        book.setName("Head First Java!");
-        book.setAuthor("Ciarls Bukovski!");
+        Journal journal = new Journal();
+        journal.setTitle("Head First Java!");
+        journal.setAuthor("Ciarls Bukovski!");
         Cart cart = new Cart();
-        cart.add(book);
+        cart.add(journal);
         return cart;
     }
 

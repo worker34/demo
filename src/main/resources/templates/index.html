@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Library</title> 
+		<title>Journals</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>     
 	</head>
 	<body>
-	<p>
-		<span sec:authentication="name"></span> has <span sec:authentication="authorities"></span>
-	</p>
-	<p>
-	<form method="POST" th:action="@{/logout}">
-		<input value="Sing out" type="submit"/>
-	</form>
-	</p>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{'/'}">Home</a></li>
+				<li><a th:href="@{'/viewCart'}">View Cart</a></li>
+				<li><a th:href="@{'/edit/0'}">Add</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a><span class="glyphicon glyphicon-user"></span>Hello <span sec:authentication="name"></span>!</a></li>
+				<li><a th:href="@{/logout}">Log Out</a></li>
+			</ul>
+		</div>
+	</nav>
 		<div class="container">
-			<div sec:authorize="isAuthenticated()">
-				<a th:href="@{'/edit/0'}">Add</a>
-			</div>
-			<div>
-				<a th:href="@{'/viewCart'}">View Cart</a>
-			</div>
+
 			<table class="table table-condensed">    
 				<thead>
 					<tr>
@@ -30,25 +33,21 @@
 						<th>Author</th>				
 						<th>Publisher</th>
 						<th>Year</th>
-						<th>ISBN</th>
+						<th>ISSN</th>
 						<th>Description</th>
-						<div sec:authorize="isAuthenticated()">
-							<th>Actions</th>
-						</div>
+						<th>Actions</th>
 					</tr>
 				</thead>	
 				<tbody>		
-					<tr th:each="book:${books}">
-						<td th:text="${book.id}"></td>
-						<td th:text="${book.name}"></td>
-						<td th:text="${book.author}"></td>				
-						<td th:text="${book.publisher}"></td>
-						<td th:text="${book.year}"></td>
-						<td th:text="${book.isbn}"></td>
-						<td th:text="${book.description}"></td>
-						<div sec:authorize="isAuthenticated()">
-							<td><a th:href="@{'/edit/' + ${book.id}}">Edit</a><br/><a th:href="@{'/delete/' + ${book.id}}">Delete</a><a th:href="@{'/view/' + ${book.id}}">View</a></td>
-						</div>
+					<tr th:each="journal:${journals}">
+						<td th:text="${journal.id}"></td>
+						<td th:text="${journal.title}"></td>
+						<td th:text="${journal.author}"></td>
+						<td th:text="${journal.publisher}"></td>
+						<td th:text="${journal.year}"></td>
+						<td th:text="${journal.issn}"></td>
+						<td th:text="${journal.description}"></td>
+						<td><a th:href="@{'/edit/' + ${journal.id}}" class=".btn-primary">Edit</a><br/><a th:href="@{'/delete/' + ${journal.id}}" class=".btn-primary">Delete</a><a th:href="@{'/view/' + ${journal.id}}" class=".btn-primary">View</a></td>
 					</tr>
 				</tbody>
 			</table>

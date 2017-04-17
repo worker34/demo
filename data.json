@@ -1,42 +1,32 @@
 [
   {
     "id": 2,
-    "name": "Head First ReactJs",
+    "title": "Head First ReactJs",
     "author": "ORealy",
     "pages": 155,
     "publisher": "Chisinau",
     "year": 2015,
-    "isbn": "eee555",
-    "description": "this is a good bk!"
-  },
-  {
-    "id": 1,
-    "name": "Head First Ajax12",
-    "author": "ORealy",
-    "pages": 55,
-    "publisher": "Balti",
-    "year": 2017,
-    "isbn": "ddd444",
+    "issn": "eee555",
     "description": "this is a good book!"
   },
   {
     "id": 3,
-    "name": "Head First JAVA",
+    "title": "Head First JAVA",
     "author": "ORealy",
     "pages": 55,
     "publisher": "BL",
     "year": 2015,
-    "isbn": "eeee5555",
-    "description": "THIS IS A GOOD BOOK1"
+    "issn": "eeee5555",
+    "description": "THIS IS A GOOD BOOK!"
   },
   {
     "id": 4,
-    "name": "Head First HTML123",
+    "title": "Head First HTML",
     "author": "Ciars Bucovski",
     "pages": 33,
     "publisher": "Orhei",
     "year": 2011,
-    "isbn": "eee555",
+    "issn": "aaa111",
     "description": "this is a good book!"
   }
 ]

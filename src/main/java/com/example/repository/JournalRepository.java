@@ -6,39 +6,37 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.entity.Journal;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.stereotype.Repository;
 
-import com.example.entity.Book;
-
 @Repository
-public class BookRepository {
+public class JournalRepository {
 
-	List<Book> books;
+	List<Journal> journals;
 	public static final String PATHNAME = "data.json";
 
-	public BookRepository(){
+	public JournalRepository(){
 		ObjectMapper mapper = new ObjectMapper();
         try {
-            books = mapper.readValue(new File(PATHNAME), new TypeReference<List<Book>>(){});
+            journals = mapper.readValue(new File(PATHNAME), new TypeReference<List<Journal>>(){});
         } catch (IOException e) {
             e.printStackTrace();
-            books = new ArrayList<>();
+            journals = new ArrayList<>();
         }
     }
 	
 	// return all books from the json file
-	public List<Book> findAll(){
-		return books;
+	public List<Journal> findAll(){
+		return journals;
 	}
 
 	// delete by id
 	public void delete(int id){
-		for (int i = 0; i < books.size(); i++) {
-			if(id == books.get(i).getId()){
-				books.remove(i);
+		for (int i = 0; i < journals.size(); i++) {
+			if(id == journals.get(i).getId()){
+				journals.remove(i);
 				break;
 			}
 		}
@@ -47,35 +45,35 @@ public class BookRepository {
 	
 	// if id of the book != null update book
 	// if id of the book is null add book	
-	public void save(Book book){
-		if(book.getId() != 0) {
-			for (int i = 0; i < books.size(); i++) {
-				if(book.getId() == books.get(i).getId()){
-					books.set(i, book);
+	public void save(Journal journal){
+		if(journal.getId() != 0) {
+			for (int i = 0; i < journals.size(); i++) {
+				if(journal.getId() == journals.get(i).getId()){
+					journals.set(i, journal);
 					break;
 				}
 			}
 		}else{
-		    book.setId(books.size() + 1);
-			books.add(book);
+			journal.setId(journals.size() + 1);
+			journals.add(journal);
 		}
         updateJsonFile();
 	}
 	
 	// find book by id
-	public Book findBookById(long id){
-		for(Book book:findAll()){
+	public Journal findJournalById(long id){
+		for(Journal book:findAll()){
 			if(book.getId() == id){
 				return book;
 			}
 		}
-		return new Book();
+		return new Journal();
 	}
 
     private void updateJsonFile() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File(PATHNAME), books);
+            mapper.writeValue(new File(PATHNAME), journals);
         } catch (IOException e) {
             e.printStackTrace();
         }

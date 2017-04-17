@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>View Book</title>
+    <title>View Journal</title>
 </head>
 <body>
-    <h2>View Book!</h2>
+    <h2>View Journal!</h2>
     <div>
-        <a th:href="@{'/addToCard/' + ${book.id}}">Add To Card</a>
+        <a th:href="@{'/addToCard/' + ${journal.id}}">Add To Card</a>
     </div>
     <div>
         <a th:href="@{'/viewCart'}">View Cart</a>
@@ -14,32 +14,32 @@
     <table>
         <tr>
             <td><label>Title</label></td>
-            <input type="hidden" th:field="${book.id}" />
-            <td th:text="${book.name}"></td>
+            <input type="hidden" th:field="${journal.id}" />
+            <td th:text="${journal.title}"></td>
         </tr>
         <tr>
             <td><label>Author</label></td>
-            <td th:text="${book.author}"></td>
+            <td th:text="${journal.author}"></td>
         </tr>
         <tr>
             <td><label>Pages</label></td>
-            <td th:text="${book.publisher}"></td>
+            <td th:text="${journal.pages}"></td>
         </tr>
         <tr>
             <td><label>Publisher</label></td>
-            <td th:text="${book.publisher}"></td>
+            <td th:text="${journal.publisher}"></td>
         </tr>
         <tr>
             <td><label>Year</label></td>
-            <td th:text="${book.year}"></td>
+            <td th:text="${journal.year}"></td>
         </tr>
         <tr>
             <td><label>ISBN</label></td>
-            <td th:text="${book.isbn}"></td>
+            <td th:text="${journal.issn}"></td>
         </tr>
         <tr>
             <td><label>Description</label></td>
-            <td th:text="${book.description}"></td>
+            <td th:text="${journal.description}"></td>
         </tr>
     </table>
 </body>

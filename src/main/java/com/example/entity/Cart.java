@@ -1,40 +1,38 @@
 package com.example.entity;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import java.util.*;
 
 /**
  * Created by tzurc on 4/15/2017.
  */
 @Component
-public class Cart implements List<Book> {
+public class Cart implements List<Journal> {
 
-    List<Book> books;
+    List<Journal> journals;
 
     public Cart(){
-        books = new ArrayList();
+        journals = new ArrayList();
     }
 
     @Override
     public int size() {
-        return books.size();
+        return journals.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return books.isEmpty();
+        return journals.isEmpty();
     }
 
     @Override
     public boolean contains(Object o) {
-        return books.contains(o);
+        return journals.contains(o);
     }
 
     @Override
-    public Iterator<Book> iterator() {
-        return books.iterator();
+    public Iterator<Journal> iterator() {
+        return journals.iterator();
     }
 
     @Override
@@ -48,13 +46,13 @@ public class Cart implements List<Book> {
     }
 
     @Override
-    public boolean add(Book book) {
-        return books.add(book);
+    public boolean add(Journal journal) {
+        return journals.add(journal);
     }
 
     @Override
     public boolean remove(Object o) {
-        return books.remove(o);
+        return journals.remove(o);
     }
 
     @Override
@@ -63,12 +61,12 @@ public class Cart implements List<Book> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends Book> c) {
+    public boolean addAll(Collection<? extends Journal> c) {
         return false;
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends Book> c) {
+    public boolean addAll(int index, Collection<? extends Journal> c) {
         return false;
     }
 
@@ -84,51 +82,51 @@ public class Cart implements List<Book> {
 
     @Override
     public void clear() {
-        books.clear();
+        journals.clear();
     }
 
     @Override
-    public Book get(int index) {
-        return books.get(index);
+    public Journal get(int index) {
+        return journals.get(index);
     }
 
     @Override
-    public Book set(int index, Book element) {
-        return books.set(index, element);
+    public Journal set(int index, Journal element) {
+        return journals.set(index, element);
     }
 
     @Override
-    public void add(int index, Book element) {
-        books.add(index, element);
+    public void add(int index, Journal element) {
+        journals.add(index, element);
     }
 
     @Override
-    public Book remove(int index) {
-        return books.remove(index);
+    public Journal remove(int index) {
+        return journals.remove(index);
     }
 
     @Override
     public int indexOf(Object o) {
-        return books.indexOf(o);
+        return journals.indexOf(o);
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return books.lastIndexOf(o);
+        return journals.lastIndexOf(o);
     }
 
     @Override
-    public ListIterator<Book> listIterator() {
-        return books.listIterator();
+    public ListIterator<Journal> listIterator() {
+        return journals.listIterator();
     }
 
     @Override
-    public ListIterator<Book> listIterator(int index) {
-        return books.listIterator();
+    public ListIterator<Journal> listIterator(int index) {
+        return journals.listIterator();
     }
 
     @Override
-    public List<Book> subList(int fromIndex, int toIndex) {
+    public List<Journal> subList(int fromIndex, int toIndex) {
         return null;
     }
 }

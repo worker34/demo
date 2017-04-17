@@ -1,17 +1,14 @@
 package com.example.entity;
 
-import org.springframework.context.annotation.Scope;
-
-@Scope("session")
-public class Book {
+public class Journal {
 	
 	private int id;
-	private String name;
+	private String title;
 	private String author;	
 	private int pages;
 	private String publisher;
 	private int year;
-	private String isbn;
+	private String issn;
 	private String description;
 	
 	public int getId() {
@@ -20,11 +17,11 @@ public class Book {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getAuthor() {
 		return author;
@@ -50,11 +47,11 @@ public class Book {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	public String getIsbn() {
-		return isbn;
+	public String getIssn() {
+		return issn;
 	}
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setIssn(String issn) {
+		this.issn = issn;
 	}
 	public String getDescription() {
 		return description;
