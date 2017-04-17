@@ -1,15 +1,39 @@
 package com.example.entity;
 
+import javax.validation.constraints.*;
+
 public class Journal {
-	
+
+	@Min(value=0)
+	@Max(value=100)
 	private int id;
+
+	@NotNull(message = "Title of the journal not maybe null ")
+	@Size(min=4, max=30, message="Title of journal must be between 4 and 30 characters long.")
 	private String title;
-	private String author;	
+
+	@NotNull(message = "Author of the journal not maybe null ")
+	@Size(min=4, max=20, message="Invalid author name.")
+	private String author;
+
+	@Min(value=1, message="The journal are many pages.")
+	@Max(value=2000, message="The journal are many pages.")
 	private int pages;
+
+	@NotNull(message = "Publisher of the journal not maybe null ")
+	@Size(min=4, max=20, message="Invalid publisher name.")
 	private String publisher;
+
+	@Min(value=1980, message="Invalid year.")
+	@Max(value=2017, message="Invalid year.")
 	private int year;
+
 	private String issn;
 	private String description;
+
+	@Min(value=1, message="Check price.")
+	@Max(value=1980, message="Check price.")
+	private int price;
 	
 	public int getId() {
 		return id;
@@ -59,5 +83,10 @@ public class Journal {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 }

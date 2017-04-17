@@ -2,44 +2,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Update Journal</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
-	<body>	
-		<form th:action="@{'/edit/'+ ${journal.id}}" th:object="${journal}" th:method="PUT">
-		    <table>
-		        <tr>
-		            <td><label>Title</label></td>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" th:href="@{'/'}">JOURNALS</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{'/'}">Home</a></li>
+					<li><a th:href="@{'/viewCart'}">View Cart</a></li>
+					<li  class="active"><a th:href="@{'/edit/0'}">Add</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a><span class="glyphicon glyphicon-user"></span>Hello <span sec:authentication="name"></span>!</a></li>
+					<li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container">
+			<form th:action="@{'/edit/'+ ${journal.id}}" th:object="${journal}" th:method="PUT">
+				<div class="form-group">
+					<label th:for="title">Title:</label>
 					<input type="hidden" th:field="*{id}" />
-		            <td><input type="text" th:field="*{title}" /></td>
-		        </tr>
-		        <tr>
-		            <td><label>Author</label></td>
-		            <td><input type="text" th:field="*{author}" /></td>
-		        </tr>
-		         <tr>
-		            <td><label>Pages</label></td>
-		            <td><input type="text" th:field="*{pages}" /></td>
-		        </tr>
-		         <tr>
-		            <td><label>Publisher</label></td>
-		            <td><input type="text" th:field="*{publisher}" /></td>
-		        </tr>
-		         <tr>
-		            <td><label>Year</label></td>
-		            <td><input type="text" th:field="*{year}" /></td>
-		        </tr>
-		         <tr>
-		            <td><label>ISBN</label></td>
-		            <td><input type="text" th:field="*{issn}" /></td>
-		        </tr>
-		         <tr>
-		            <td><label>Description</label></td>
-		            <td><input type="text" th:field="*{description}" /></td>
-		        </tr>
-		        <tr>
-		            <td></td>
-		            <td><button type="submit">Update</button></td>
-		        </tr>
-		    </table>
-		</form>
+					<input type="text" th:field="*{title}" class="form-control" th:id="title"/>
+					<p th:each="err : ${#fields.hasErrors('title')}" th:text="${err}"></p>
+					<p th:each="err : ${#fields.hasErrors('title')}" th:text="${err}"></p>
+				</div>
+				<div class="form-group">
+					<label th:for="author">Author:</label>
+					<input type="text" th:field="*{author}" class="form-control" th:id="author"/>
+				</div>
+				<div class="form-group">
+					<label th:for="pages">Pages:</label>
+					<input type="text" th:field="*{pages}" class="form-control" th:id="pages"/>
+				</div>
+				<div class="form-group">
+					<label th:for="publisher">Publisher:</label>
+					<input type="text" th:field="*{publisher}" class="form-control" th:id="publisher"/>
+				</div>
+				<div class="form-group">
+					<label th:for="year">Year:</label>
+					<input type="text" th:field="*{year}" class="form-control" th:id="year"/>
+				</div>
+				<div class="form-group">
+					<label th:for="issn">ISSN:</label>
+					<input type="text" th:field="*{issn}" class="form-control" th:id="issn"/>
+				</div>
+				<div class="form-group">
+					<label th:for="price">Price:</label>
+					<input type="text" th:field="*{price}" class="form-control" th:id="price"/>
+				</div>
+				<div class="form-group">
+					<label th:for="description">Description:</label>
+					<textarea th:field="*{description}" class="form-control" th:rows="5" th:id="description"></textarea>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>

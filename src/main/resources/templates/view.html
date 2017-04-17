@@ -1,46 +1,71 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>View Journal</title>
-</head>
-<body>
-    <h2>View Journal!</h2>
-    <div>
-        <a th:href="@{'/addToCard/' + ${journal.id}}">Add To Card</a>
-    </div>
-    <div>
-        <a th:href="@{'/viewCart'}">View Cart</a>
-    </div>
-    <table>
-        <tr>
-            <td><label>Title</label></td>
-            <input type="hidden" th:field="${journal.id}" />
-            <td th:text="${journal.title}"></td>
-        </tr>
-        <tr>
-            <td><label>Author</label></td>
-            <td th:text="${journal.author}"></td>
-        </tr>
-        <tr>
-            <td><label>Pages</label></td>
-            <td th:text="${journal.pages}"></td>
-        </tr>
-        <tr>
-            <td><label>Publisher</label></td>
-            <td th:text="${journal.publisher}"></td>
-        </tr>
-        <tr>
-            <td><label>Year</label></td>
-            <td th:text="${journal.year}"></td>
-        </tr>
-        <tr>
-            <td><label>ISBN</label></td>
-            <td th:text="${journal.issn}"></td>
-        </tr>
-        <tr>
-            <td><label>Description</label></td>
-            <td th:text="${journal.description}"></td>
-        </tr>
-    </table>
-</body>
+    <head>
+        <title>View Journal</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{'/'}">JOURNALS</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li><a th:href="@{'/viewCart'}">View Cart</a></li>
+                    <li><a th:href="@{'/edit/0'}">Add</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span>Hello <span sec:authentication="name"></span>!</a></li>
+                    <li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <h2>View Journal!</h2>
+            <div>
+                <a th:href="@{'/addToCard/' + ${journal.id}}">Add To Card</a>
+            </div>
+            <div>
+                <a th:href="@{'/viewCart'}">View Cart</a>
+            </div>
+            <table>
+                <tr>
+                    <td><label>Title</label></td>
+                    <input type="hidden" th:field="${journal.id}" />
+                    <td th:text="${journal.title}"></td>
+                </tr>
+                <tr>
+                    <td><label>Author</label></td>
+                    <td th:text="${journal.author}"></td>
+                </tr>
+                <tr>
+                    <td><label>Pages</label></td>
+                    <td th:text="${journal.pages}"></td>
+                </tr>
+                <tr>
+                    <td><label>Publisher</label></td>
+                    <td th:text="${journal.publisher}"></td>
+                </tr>
+                <tr>
+                    <td><label>Year</label></td>
+                    <td th:text="${journal.year}"></td>
+                </tr>
+                <tr>
+                    <td><label>ISSN</label></td>
+                    <td th:text="${journal.issn}"></td>
+                </tr>
+                <tr>
+                    <td><label>Price</label></td>
+                    <td th:text="${journal.price}"></td>
+                </tr>
+                <tr>
+                    <td><label>Description</label></td>
+                    <td th:text="${journal.description}"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>

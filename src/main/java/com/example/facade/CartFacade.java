@@ -14,17 +14,23 @@ import javax.servlet.http.HttpSession;
 @Component
 public class CartFacade {
 
-//    @Autowired
-//    private HttpSession httpSession;
+    @Autowired
+    private HttpSession httpSession;
 
 //    return cart of the authenticated user
     public Cart getCart(){
-        Journal journal = new Journal();
-        journal.setTitle("Head First Java!");
-        journal.setAuthor("Ciarls Bukovski!");
-        Cart cart = new Cart();
-        cart.add(journal);
+        Cart cart;
+        cart = (Cart) httpSession.getAttribute("cart");
+        if (cart == null) cart = new Cart();
+        httpSession.setAttribute("cart", cart);
         return cart;
     }
 
+    public void add(Journal addJournal) {
+        Cart cart;
+        cart = (Cart) httpSession.getAttribute("cart");
+        if (cart == null) cart = new Cart();
+        cart.add(addJournal);
+        httpSession.setAttribute("cart", cart);
+    }
 }

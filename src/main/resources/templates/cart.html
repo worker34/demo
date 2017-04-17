@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>View Cart</title>
-</head>
-<body>
-<table class="table table-condensed">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Publisher</th>
-        <th>Year</th>
-        <th>ISSN</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="journal:${cart}">
-        <td th:text="${journal.id}"></td>
-        <td th:text="${journal.title}"></td>
-        <td th:text="${journal.author}"></td>
-        <td th:text="${journal.publisher}"></td>
-        <td th:text="${journal.year}"></td>
-        <td th:text="${journal.issn}"></td>
-        <td th:text="${journal.description}"></td>
-    </tr>
-    </tbody>
-</table>
-</body>
+    <head>
+        <title>View Cart</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{'/'}">JOURNALS</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li class="active"><a th:href="@{'/viewCart'}">View Cart</a></li>
+                    <li><a th:href="@{'/edit/0'}">Add</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span>Hello <span sec:authentication="name"></span>!</a></li>
+                    <li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <table class="table table-condensed table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>Year</th>
+                    <th>ISSN</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="journal:${cart}">
+                    <td th:text="${journal.id}"></td>
+                    <td th:text="${journal.title}"></td>
+                    <td th:text="${journal.author}"></td>
+                    <td th:text="${journal.publisher}"></td>
+                    <td th:text="${journal.year}"></td>
+                    <td th:text="${journal.issn}"></td>
+                    <td th:text="${journal.price}"></td>
+                    <td th:text="${journal.description}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

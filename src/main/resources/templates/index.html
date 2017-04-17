@@ -10,7 +10,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">WebSiteName</a>
+				<a class="navbar-brand" th:href="@{'/'}">JOURNALS</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a th:href="@{'/'}">Home</a></li>
@@ -19,13 +19,13 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a><span class="glyphicon glyphicon-user"></span>Hello <span sec:authentication="name"></span>!</a></li>
-				<li><a th:href="@{/logout}">Log Out</a></li>
+				<li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
 			</ul>
 		</div>
 	</nav>
 		<div class="container">
 
-			<table class="table table-condensed">    
+			<table class="table table-condensed table-hover table-striped">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -35,6 +35,7 @@
 						<th>Year</th>
 						<th>ISSN</th>
 						<th>Description</th>
+						<th>Price</th>
 						<th>Actions</th>
 					</tr>
 				</thead>	
@@ -47,7 +48,10 @@
 						<td th:text="${journal.year}"></td>
 						<td th:text="${journal.issn}"></td>
 						<td th:text="${journal.description}"></td>
-						<td><a th:href="@{'/edit/' + ${journal.id}}" class=".btn-primary">Edit</a><br/><a th:href="@{'/delete/' + ${journal.id}}" class=".btn-primary">Delete</a><a th:href="@{'/view/' + ${journal.id}}" class=".btn-primary">View</a></td>
+						<td th:text="${journal.price}"></td>
+						<td><a th:href="@{'/edit/' + ${journal.id}}" class="btn btn-primary" role="button">Edit</a>
+							<a th:href="@{'/delete/' + ${journal.id}}"  class="btn btn-primary" role="button">Delete</a>
+							<a th:href="@{'/view/' + ${journal.id}}"  class="btn btn-primary" role="button">View</a></td>
 					</tr>
 				</tbody>
 			</table>

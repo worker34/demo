@@ -9,10 +9,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 @Scope("session")
@@ -40,7 +43,11 @@ public class JournalController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
 	@Secured({"ADMIN"})
-	public String saveUpdate(@PathVariable long id, @ModelAttribute("journal") Journal journal, Model model){
+	public String saveUpdate(@PathVariable long id, @Valid @ModelAttribute("journal") Journal journal, BindingResult bindingResult, Model model){
+		if(bindingResult.hasErrors()){
+			model.addAttribute("journal", journal);
+			return "edit";
+		}
 		journalRepository.save(journal);
 		model.addAttribute("journals", journalRepository.findAll());
 		return "redirect:/";

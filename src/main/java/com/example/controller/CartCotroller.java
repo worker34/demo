@@ -15,8 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * Created by tzurc on 4/15/2017.
  */
@@ -32,17 +30,15 @@ public class CartCotroller {
     @Autowired
     CartFacade cartFacade;
 
-    @Autowired
-    Cart cart;
+
 
     @RequestMapping("/addToCard/{id}")
     @Secured({"ADMIN", "USER"})
-    public String addToCard(@PathVariable("id")long id, Model model, HttpServletRequest request){
-        System.out.println("From addToCard() Controller! journal ID: " + id);
+    public String addToCard(@PathVariable("id")long id, Model model){
         Journal addJournal = journalRepository.findJournalById(id);
-        cart.add(addJournal);
+        cartFacade.add(addJournal);
         model.addAttribute("journal", addJournal);
-        return "view";
+        return "redirect:/viewCart";
     }
 
     @RequestMapping("/viewCart")

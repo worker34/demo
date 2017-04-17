@@ -27,7 +27,7 @@ public class JournalRepository {
         }
     }
 	
-	// return all books from the json file
+	// return all journals from the json file
 	public List<Journal> findAll(){
 		return journals;
 	}
@@ -43,8 +43,8 @@ public class JournalRepository {
         updateJsonFile();
 	}
 	
-	// if id of the book != null update book
-	// if id of the book is null add book	
+	// if id of the journal != null update journal
+	// if id of the journal is null add journal
 	public void save(Journal journal){
 		if(journal.getId() != 0) {
 			for (int i = 0; i < journals.size(); i++) {
@@ -60,11 +60,11 @@ public class JournalRepository {
         updateJsonFile();
 	}
 	
-	// find book by id
+	// find journal by id
 	public Journal findJournalById(long id){
-		for(Journal book:findAll()){
-			if(book.getId() == id){
-				return book;
+		for(Journal journal:findAll()){
+			if(journal.getId() == id){
+				return journal;
 			}
 		}
 		return new Journal();
