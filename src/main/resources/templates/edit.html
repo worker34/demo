@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Update Journal</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -29,36 +29,42 @@
 					<label th:for="title">Title:</label>
 					<input type="hidden" th:field="*{id}" />
 					<input type="text" th:field="*{title}" class="form-control" th:id="title"/>
-					<p th:each="err : ${#fields.hasErrors('title')}" th:text="${err}"></p>
-					<p th:each="err : ${#fields.hasErrors('title')}" th:text="${err}"></p>
+					<span class="alert-danger" th:each="err : ${#fields.errors('title')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<label th:for="author">Author:</label>
 					<input type="text" th:field="*{author}" class="form-control" th:id="author"/>
+					<span class="alert-danger" th:each="err : ${#fields.errors('author')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<label th:for="pages">Pages:</label>
 					<input type="text" th:field="*{pages}" class="form-control" th:id="pages"/>
+					<span class="alert-danger" th:each="err : ${#fields.errors('pages')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<label th:for="publisher">Publisher:</label>
 					<input type="text" th:field="*{publisher}" class="form-control" th:id="publisher"/>
+					<span class="alert-danger" th:each="err : ${#fields.errors('publisher')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<label th:for="year">Year:</label>
 					<input type="text" th:field="*{year}" class="form-control" th:id="year"/>
+					<span class="alert-danger" th:each="err : ${#fields.errors('year')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<label th:for="issn">ISSN:</label>
 					<input type="text" th:field="*{issn}" class="form-control" th:id="issn"/>
+					<span class="alert-danger" th:each="err : ${#fields.errors('issn')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<label th:for="price">Price:</label>
 					<input type="text" th:field="*{price}" class="form-control" th:id="price"/>
+					<span class="alert-danger" th:each="err : ${#fields.errors('price')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<label th:for="description">Description:</label>
 					<textarea th:field="*{description}" class="form-control" th:rows="5" th:id="description"></textarea>
+					<span class="alert-danger" th:each="err : ${#fields.errors('description')}" th:text="${err}"></span>
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Save</button>
