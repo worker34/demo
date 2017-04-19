@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script type="application/javascript">
+            function valid(){
+                var state = $("input[name='sex']:checked").val();
+                if(!state){
+                    $('#message').html('Please select your gender.');
+                    $('div#message').css('color', 'red');
+                    return false;
+                }else{
+                    $('#message').hide();
+                   // alert(state);
+                }
+                if(state == 'female'){
+                    $('#male').hide();
+                    $("label[for='male']").hide();
+                }else{
+                    $('#female').hide();
+                    $("label[for='female']").hide();
+                }
+                var test = $("p.first, input[type='button']");
+                //console.log(test);
+               // test += $("input[type='button']");
+                for(var i = 0; i < test.length; i++){
+                    console.log(test[i]);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form id="form" name="form">
+            <p class="first">First 10 lessons!</p>
+            <label for="female">Female</label>
+            <input type="radio" name="sex" id="female" value="female"/>
+            <label for="male">male</label>
+            <input type="radio" name="sex" id="male" value="male"/></form></br>
+            <div id="message"></div></br>
+            <input type="button" id="done" onclick="valid()" name="done" value="Send"/>
+        </form>
+    </body>
+</html>
