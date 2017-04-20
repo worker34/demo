@@ -4,42 +4,88 @@
         <meta charset="UTF-8">
         <title>jQuery</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-        <script type="application/javascript">
-            function valid(){
-                var state = $("input[name='sex']:checked").val();
-                if(!state){
-                    $('#message').html('Please select your gender.');
-                    $('div#message').css('color', 'red');
-                    return false;
-                }else{
-                    $('#message').hide();
-                   // alert(state);
-                }
-                if(state == 'female'){
-                    $('#male').hide();
-                    $("label[for='male']").hide();
-                }else{
-                    $('#female').hide();
-                    $("label[for='female']").hide();
-                }
-                var test = $("p.first, input[type='button']");
-                //console.log(test);
-               // test += $("input[type='button']");
-                for(var i = 0; i < test.length; i++){
-                    console.log(test[i]);
-                }
+        <style>
+            .div_1{
+                background-color: antiquewhite;
             }
-        </script>
+
+            .div_2{
+                background-color: darkgoldenrod;
+            }
+        </style>
     </head>
     <body>
-        <form id="form" name="form">
-            <p class="first">First 10 lessons!</p>
-            <label for="female">Female</label>
-            <input type="radio" name="sex" id="female" value="female"/>
-            <label for="male">male</label>
-            <input type="radio" name="sex" id="male" value="male"/></form></br>
-            <div id="message"></div></br>
-            <input type="button" id="done" onclick="valid()" name="done" value="Send"/>
-        </form>
+        <!--<form id="form" name="form">-->
+            <p class="first">First 15 lessons!</p>
+            <!--<label for="female">Female</label>-->
+            <!--<input type="radio" name="sex" id="female" value="female"/>-->
+            <!--<label for="male">male</label>-->
+            <!--<input type="radio" name="sex" id="male" value="male"/></form></br>-->
+            <!--<div id="message"></div></br>-->
+            <!--<input type="button" id="done" onclick="valid()" name="done" value="Send"/>-->
+        <!--</form>-->
+        <!--<img src="1.png" alt="Image" title="Image"/></br>-->
+        <!--<img src="1.png" title="Image"/></br>-->
+        <!--<img src="1.png" title="Image"/></br>-->
+        <!--<img src="1.png" alt="Image" title="Image"/></br>-->
+        <!--<img src="1.png" alt="Image" title="Image"/></br>-->
+        <!---->
+
+        <div id="div">
+            Text
+            <p>TextP</p>
+        </div>
+
+        <script type="text/javascript">
+    //        function valid(){
+    //                var state = $("input[name='sex']:checked").val();
+    //                if(!state){
+    //                    $('#message').html('Please select your gender.');
+    //                    $('div#message').css('color', 'red');
+    //                    return false;
+    //                }else{
+    //                    $('#message').hide();
+    //                   // alert(state);
+    //                }
+    //                if(state == 'female'){
+    //                    $('#male').hide();
+    //                    $("label[for='male']").hide();
+    //                }else{
+    //                    $('#female').hide();
+    //                    $("label[for='female']").hide();
+    //                }
+    //                var test = $("p.first, input[type='button']");
+    //                //console.log(test);
+    //               // test += $("input[type='button']");
+    //                for(var i = 0; i < test.length; i++){
+    //                    console.log(test[i]);
+    //                }
+                $(":not(img[alt])").attr("alt", "jQuery");
+    //            $('img').not("img[alt]").attr("alt", "jQuery");
+//                var elements = $('img');
+//                var text = "";
+//                for(var i = 0; i < elements.length; i++){
+//                    text += elements[i].alt + "\n";
+//                }
+//                alert(text);
+    //        }
+//            var div = "";
+//            while((div != 1) & (div != 2)){
+//                div = prompt('Please select number (1 or 2): ');
+//                var div = prompt("1 or 2");
+//            }
+//            alert($('#div').text());
+//            alert($('#div').html());
+            $("#div").css('background-color', 'red');
+            $("#div").css('font-size', '30px');
+            $("#div").css('width', '100px');
+            $("#div").css('height', function(){
+                return $(this).width();
+            });
+            var block = $('#div').clone();
+            block.attr("class", "div_2");
+            block.removeAttr('style');
+            $('body').append(block);
+        </script>
     </body>
 </html>
