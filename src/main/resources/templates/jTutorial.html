@@ -16,7 +16,7 @@
     </head>
     <body>
         <!--<form id="form" name="form">-->
-            <p class="first">First 15 lessons!</p>
+            <p class="first">First 19 lessons!</p>
             <!--<label for="female">Female</label>-->
             <!--<input type="radio" name="sex" id="female" value="female"/>-->
             <!--<label for="male">male</label>-->
@@ -31,10 +31,13 @@
         <!--<img src="1.png" alt="Image" title="Image"/></br>-->
         <!---->
 
-        <div id="div">
-            Text
-            <p>TextP</p>
-        </div>
+        <!--<div id="div">-->
+            <!--Text-->
+            <!--<p>TextP</p>-->
+        <!--</div>-->
+        <!--<div class="div_3"></div>-->
+
+
 
         <script type="text/javascript">
     //        function valid(){
@@ -76,16 +79,34 @@
 //            }
 //            alert($('#div').text());
 //            alert($('#div').html());
-            $("#div").css('background-color', 'red');
-            $("#div").css('font-size', '30px');
-            $("#div").css('width', '100px');
-            $("#div").css('height', function(){
-                return $(this).width();
-            });
-            var block = $('#div').clone();
-            block.attr("class", "div_2");
-            block.removeAttr('style');
-            $('body').append(block);
+//            $("#div").css('background-color', 'red');
+//            $("#div").css('font-size', '30px');
+//            $("#div").css('width', '100px');
+//            $("#div").css('height', function(){
+//                return $(this).width();
+//            });
+//            var block = $('#div').clone();
+//            block.attr("class", "div_2");
+//            block.removeAttr('style');
+//            $('body').append(block);
+//            append()
+//            $('div').append('<h1>Hello world!</h1>');
+//             appentTo();
+//            $('p').appendTo($('div.div_3'));
+            // wrap();
+//            $('p').wrap("<p style='display:none'></p>");
+//            $('body').empty();
+//            $('<div>Hello world!</div>').appendTo($('body'));
+//            $('<div class="div1">Hello world!!</div>').insertBefore($('div'));
+            function show(){
+                var text = $('#uname').val();
+                $('span').html(text);
+            };
         </script>
+        <form>
+            <input id="uname" name="uname" onkeyup="show()"/>
+            <input id="uemail" name="uemail"/>
+            <span></span>
+        </form>
     </body>
 </html>
