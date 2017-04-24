@@ -5,108 +5,40 @@
         <title>jQuery</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <style>
-            .div_1{
-                background-color: antiquewhite;
-            }
-
-            .div_2{
-                background-color: darkgoldenrod;
-            }
+           .head{
+               width: 50px;
+               height: 50px;
+               background-color: darkgoldenrod;
+               margin: 5px;
+           }
         </style>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(document).on('click', '#addComent', function(){
+                    $('form#form').show();
+                    $('a#addComent').replaceWith($('form#form'));
+
+                });
+                $('#form').on('submit', function(){
+                    var message = $('#commentText').val();
+                    $('#commentText').val = "";
+                    $('form#form').replaceWith($('a#addComent'));
+                    $('#comments').append(("<p>" + message + "</p>"));
+                    return false;
+                });
+            });
+        </script>
     </head>
     <body>
-        <!--<form id="form" name="form">-->
-            <p class="first">First 19 lessons!</p>
-            <!--<label for="female">Female</label>-->
-            <!--<input type="radio" name="sex" id="female" value="female"/>-->
-            <!--<label for="male">male</label>-->
-            <!--<input type="radio" name="sex" id="male" value="male"/></form></br>-->
-            <!--<div id="message"></div></br>-->
-            <!--<input type="button" id="done" onclick="valid()" name="done" value="Send"/>-->
-        <!--</form>-->
-        <!--<img src="1.png" alt="Image" title="Image"/></br>-->
-        <!--<img src="1.png" title="Image"/></br>-->
-        <!--<img src="1.png" title="Image"/></br>-->
-        <!--<img src="1.png" alt="Image" title="Image"/></br>-->
-        <!--<img src="1.png" alt="Image" title="Image"/></br>-->
-        <!---->
-
-        <!--<div id="div">-->
-            <!--Text-->
-            <!--<p>TextP</p>-->
-        <!--</div>-->
-        <!--<div class="div_3"></div>-->
-
-
-
-        <script type="text/javascript">
-    //        function valid(){
-    //                var state = $("input[name='sex']:checked").val();
-    //                if(!state){
-    //                    $('#message').html('Please select your gender.');
-    //                    $('div#message').css('color', 'red');
-    //                    return false;
-    //                }else{
-    //                    $('#message').hide();
-    //                   // alert(state);
-    //                }
-    //                if(state == 'female'){
-    //                    $('#male').hide();
-    //                    $("label[for='male']").hide();
-    //                }else{
-    //                    $('#female').hide();
-    //                    $("label[for='female']").hide();
-    //                }
-    //                var test = $("p.first, input[type='button']");
-    //                //console.log(test);
-    //               // test += $("input[type='button']");
-    //                for(var i = 0; i < test.length; i++){
-    //                    console.log(test[i]);
-    //                }
-                $(":not(img[alt])").attr("alt", "jQuery");
-    //            $('img').not("img[alt]").attr("alt", "jQuery");
-//                var elements = $('img');
-//                var text = "";
-//                for(var i = 0; i < elements.length; i++){
-//                    text += elements[i].alt + "\n";
-//                }
-//                alert(text);
-    //        }
-//            var div = "";
-//            while((div != 1) & (div != 2)){
-//                div = prompt('Please select number (1 or 2): ');
-//                var div = prompt("1 or 2");
-//            }
-//            alert($('#div').text());
-//            alert($('#div').html());
-//            $("#div").css('background-color', 'red');
-//            $("#div").css('font-size', '30px');
-//            $("#div").css('width', '100px');
-//            $("#div").css('height', function(){
-//                return $(this).width();
-//            });
-//            var block = $('#div').clone();
-//            block.attr("class", "div_2");
-//            block.removeAttr('style');
-//            $('body').append(block);
-//            append()
-//            $('div').append('<h1>Hello world!</h1>');
-//             appentTo();
-//            $('p').appendTo($('div.div_3'));
-            // wrap();
-//            $('p').wrap("<p style='display:none'></p>");
-//            $('body').empty();
-//            $('<div>Hello world!</div>').appendTo($('body'));
-//            $('<div class="div1">Hello world!!</div>').insertBefore($('div'));
-            function show(){
-                var text = $('#uname').val();
-                $('span').html(text);
-            };
-        </script>
-        <form>
-            <input id="uname" name="uname" onkeyup="show()"/>
-            <input id="uemail" name="uemail"/>
-            <span></span>
+        <p class="first">First 21 lessons!</p>
+        <div id="comments">
+            <p>Commnet1</p>
+            <p>Commnet2</p>
+        </div>
+        <form action="" method="post" style="display: none" id="form">
+            <textarea id="commentText" name="commentText" rows="5" cols="30"></textarea></br>
+            <input type="submit" value="Add" id="done" name="done"/>
         </form>
+        <a href="#" id="addComent" name="addComent">Add comment</a>
     </body>
 </html>
