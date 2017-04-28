@@ -14,17 +14,11 @@
         </style>
         <script type="text/javascript">
             $(document).ready(function(){
-                $(document).on('click', '#addComent', function(){
-                    $('form#form').show();
-                    $('a#addComent').replaceWith($('form#form'));
-
-                });
-                $('#form').on('submit', function(){
-                    var message = $('#commentText').val();
-                    $('#commentText').val = "";
-                    $('form#form').replaceWith($('a#addComent'));
-                    $('#comments').append(("<p>" + message + "</p>"));
-                    return false;
+                $(document).on('click', '#show', function(){
+                    $('#comments').slideTogle(1000, function() {
+                        $('#show').slideTogle(1000);
+                        $('#hide').slideTogle(1000);
+                    });
                 });
             });
         </script>
@@ -39,6 +33,7 @@
             <textarea id="commentText" name="commentText" rows="5" cols="30"></textarea></br>
             <input type="submit" value="Add" id="done" name="done"/>
         </form>
-        <a href="#" id="addComent" name="addComent">Add comment</a>
+        <a href="#" id="hide" name="hide">Hide comments</a>
+        <a href="#" id="show" style="display: none;" name="show">Show comments</a>
     </body>
 </html>
