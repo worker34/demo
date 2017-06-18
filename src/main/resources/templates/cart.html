@@ -18,7 +18,7 @@
                     <li><a th:href="@{'/edit/0'}">Add</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a><span class="glyphicon glyphicon-user"></span>Hello <span sec:authentication="name"></span>!</a></li>
+                    <li><a th:href="@{'/users/update'}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
                     <li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
                 </ul>
             </div>

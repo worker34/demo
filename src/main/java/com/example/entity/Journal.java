@@ -8,7 +8,7 @@ public class Journal {
 	@Max(value=100)
 	private int id;
 
-	@NotNull(message = "Title of the journal not maybe null ")
+	@NotNull(message = "Title of the journal not maybe null")
 	@Size(min=4, max=30, message="Title of journal must be between 4 and 30 characters long.")
 	private String title;
 

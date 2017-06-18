@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>SingUp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 style="text-align:center;">Add new User</h1>
+    <form th:action="@{'/users/singup'}" class="form-horizontal" role="form" th:object="${user}" th:method="POST">
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="firstName">First Name:</label>
+            <input type="hidden" th:field="*{id}" />
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="text" th:field="*{firstName}" class="form-control" th:id="firstName"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('firstName')}" th:text="${err}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="lastName">Last Name:</label>
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="text" th:field="*{lastName}" class="form-control" th:id="lastName"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('lastName')}" th:text="${err}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="address">Address:</label>
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="text" th:field="*{address}" class="form-control" th:id="address"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('address')}" th:text="${err}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="phone">Phone:</label>
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="text" th:field="*{phone}" class="form-control" th:id="phone"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('phone')}" th:text="${err}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="cash">Cash:</label>
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="text" th:field="*{cash}" class="form-control" th:id="cash"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('cash')}" th:text="${err}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="username">Username:</label>
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="text" th:field="*{username}" class="form-control" th:id="username"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('username')}" th:text="${err}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="password">Password:</label>
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="password" th:field="*{password}" class="form-control" th:id="password"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('password')}" th:text="${err}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="confirmPassword">Confirm Password:</label>
+            <div class="col-lg-3 col-sm-2 col-md-2 col-xs-2">
+                <input type="password" th:field="*{confirmPassword}" class="form-control" th:id="confirmPassword"/>
+                <span class="alert-danger" th:each="err : ${#fields.errors('confirmPassword')}" th:text="${err}" th:errors="*{confirmPassword}"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

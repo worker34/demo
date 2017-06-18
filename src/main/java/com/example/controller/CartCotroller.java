@@ -1,15 +1,11 @@
 package com.example.controller;
 
-import com.example.entity.Cart;
 import com.example.entity.Journal;
-import com.example.entity.User;
 import com.example.facade.CartFacade;
 import com.example.repository.JournalRepository;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
