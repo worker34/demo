@@ -33,4 +33,17 @@ public class CartFacade {
         cart.add(addJournal);
         httpSession.setAttribute("cart", cart);
     }
+
+    public String cartPay(){
+        try{
+            httpSession.setAttribute("cart", new Cart());
+        }catch(Exception e){
+            return "you not have suficient money";
+        }
+        return "Succes";
+    }
+
+    public float getPrice(){
+        return getCart().getTotalPrice();
+    }
 }

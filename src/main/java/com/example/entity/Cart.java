@@ -11,6 +11,8 @@ public class Cart implements List<Journal> {
 
     List<Journal> journals;
 
+    private float totalPrice;
+
     public Cart(){
         journals = new ArrayList();
     }
@@ -128,5 +130,13 @@ public class Cart implements List<Journal> {
     @Override
     public List<Journal> subList(int fromIndex, int toIndex) {
         return null;
+    }
+
+    public float getTotalPrice() {
+        totalPrice = 0;
+        for(Journal journal : journals){
+            totalPrice += journal.getPrice();
+        }
+        return totalPrice;
     }
 }

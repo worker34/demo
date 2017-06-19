@@ -14,8 +14,8 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a th:href="@{'/'}">Home</a></li>
-                    <li><a th:href="@{'/viewCart'}">View Cart</a></li>
-                    <li><a th:href="@{'/edit/0'}">Add</a></li>
+                    <li><a th:href="@{'/view-cart'}">View Cart</a></li>
+                    <li><a th:href="@{'/journals/0'}">Add</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a th:href="@{'/users/update'}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
@@ -26,10 +26,10 @@
         <div class="container">
             <h2>View Journal!</h2>
             <div>
-                <a th:href="@{'/addToCard/' + ${journal.id}}">Add To Card</a>
+                <a th:href="@{'/add-to-card/' + ${journal.id}}">Add To Card</a>
             </div>
             <div>
-                <a th:href="@{'/viewCart'}">View Cart</a>
+                <a th:href="@{'/view-cart'}">View Cart</a>
             </div>
             <table>
                 <tr>

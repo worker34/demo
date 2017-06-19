@@ -8,8 +8,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1 style="text-align:center;">Add new User</h1>
-    <form th:action="@{'/users/singup'}" class="form-horizontal" role="form" th:object="${user}" th:method="POST">
+    <div sec:authorize="isAuthenticated()">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{'/'}">JOURNALS</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li><a th:href="@{'/view-cart'}">View Cart</a></li>
+                    <li><a th:href="@{'/journals/0'}">Add</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{'/users/update'}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
+                    <li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <h1 style="text-align:center;">Save User</h1>
+    <form th:action="@{'/users/singup'}" class="form-horizontal" role="form" th:object="${person}" th:method="POST">
         <div class="form-group">
             <label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="firstName">First Name:</label>
             <input type="hidden" th:field="*{id}" />
