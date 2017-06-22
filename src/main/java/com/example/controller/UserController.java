@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.entity.User;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +45,8 @@ public class UserController {
     }
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasAnyAuthority('READ_USER_PRIVILEGE')")
+    @PostAuthorize("#id == principal.username")
     public String update(@PathVariable("id")int id, Model model, Principal principal){
         System.out.println("Update user: " + principal.getName());
         model.addAttribute("person", userRepository.findUserById(id));

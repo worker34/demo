@@ -43,6 +43,7 @@
     "password": "12345",
     "confirmPassword": "12345",
     "roles": [
+      "READ_USER_PRIVILEGE",
       "READ_JOURNAL_PRIVILEGE",
       "READ_CART_PRIVILEGE",
       "WRITE_CART_PRIVILEGE"

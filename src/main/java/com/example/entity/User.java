@@ -41,11 +41,13 @@ public class User {
 
     @NotNull(message = "Password Coonfirmation is required")
     private String confirmPassword;
+
     private String[] roles;
 
     @Min(value = 0, message = "Cash Need to be great than 0")
     @Digits(integer = 5 /*precision*/, fraction = 4 /*scale*/, message = "Please check your Cash")
     private Float cash;
+
     private Cart cart;
 
     public int getId() {
