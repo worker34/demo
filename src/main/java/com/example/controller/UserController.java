@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.entity.User;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,7 @@ public class UserController {
     }
 
     @PostMapping("/singup")
+    @PreAuthorize("hasAnyAuthority('WRITE_USER_PRIVILEGE')")
     public String singup(@Valid @ModelAttribute("person") User user, BindingResult bindingResult, Model model){
         if(!user.getPassword().equals(user.getConfirmPassword())){
             bindingResult.rejectValue("confirmPassword", "confirmPassword.person","Please confirm password");
@@ -35,16 +37,18 @@ public class UserController {
             model.addAttribute("person", user);
             return "singup";
         }
-        user.setRoles(new String[]{"USER"});
+        user.setRoles(new String[]{"READ_JOURNAL_PRIVILEGE", "READ_CART_PRIVILEGE", "WRITE_CART_PRIVILEGE"});
         System.out.println(user.getCash());
         userRepository.save(user);
         return "redirect:/";
     }
 
-    @GetMapping("/update")
-    public String update(Model model, Principal principal){
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable("id")int id, Model model, Principal principal){
         System.out.println("Update user: " + principal.getName());
-        model.addAttribute("person", userRepository.findUserByUsername(principal.getName()));
+        model.addAttribute("person", userRepository.findUserById(id));
         return "singup";
     }
+
+
 }

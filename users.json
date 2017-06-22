@@ -1,1 +1,70 @@
-[{"id":1,"firstName":"Igor","lastName":"Turcanu","address":"Corlateni","phone":"068983770","username":"admin","password":"12345","confirmPassword":"12345","roles":["ADMIN","USER"],"cash":60.0,"cart":null},{"id":2,"firstName":null,"lastName":null,"address":null,"phone":null,"username":"user","password":"1234","confirmPassword":null,"roles":["USER"],"cash":null,"cart":null},{"id":3,"firstName":"Igor","lastName":"Turcanu","address":"cORLATENI","phone":"5645654654","username":"user1","password":"12345","confirmPassword":"12345","roles":["USER"],"cash":2000.0,"cart":null}]
+[
+  {
+    "id": 1,
+    "firstName": "Igor",
+    "lastName": "Turcanu",
+    "address": "Corlateni",
+    "phone": "068983770",
+    "username": "admin",
+    "password": "12345",
+    "confirmPassword": "12345",
+    "roles": [
+      "READ_JOURNAL_PRIVILEGE",
+      "WRITE_JOURNAL_PRIVILEGE",
+      "WRITE_USER_PRIVILEGE"
+    ],
+    "cash": 60.0,
+    "cart": null
+  },
+  {
+    "id": 2,
+    "firstName": null,
+    "lastName": null,
+    "address": null,
+    "phone": null,
+    "username": "user",
+    "password": "1234",
+    "confirmPassword": null,
+    "roles": [
+      "READ_JOURNAL_PRIVILEGE",
+      "READ_CART_PRIVILEGE",
+      "WRITE_CART_PRIVILEGE"
+    ],
+    "cash": null,
+    "cart": null
+  },
+  {
+    "id": 3,
+    "firstName": "Igor",
+    "lastName": "Turcanu",
+    "address": "cORLATENI",
+    "phone": "5645654654",
+    "username": "user1",
+    "password": "12345",
+    "confirmPassword": "12345",
+    "roles": [
+      "READ_JOURNAL_PRIVILEGE",
+      "READ_CART_PRIVILEGE",
+      "WRITE_CART_PRIVILEGE"
+    ],
+    "cash": 2000.0,
+    "cart": null
+  },
+  {
+    "id": 4,
+    "firstName": "FirstName",
+    "lastName": "LastName",
+    "address": "Balti",
+    "phone": "068983770",
+    "username": "test",
+    "password": "12345",
+    "confirmPassword": "12345",
+    "roles": [
+      "READ_JOURNAL_PRIVILEGE",
+      "READ_CART_PRIVILEGE",
+      "WRITE_CART_PRIVILEGE"
+    ],
+    "cash": 1000.0,
+    "cart": null
+  }
+]

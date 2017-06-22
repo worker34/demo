@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @Scope("session")
@@ -33,22 +34,24 @@ public class JournalController {
 
 
 	@GetMapping("/")
-	@PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
-	public String showAll(Model model){
+	@PreAuthorize("hasAnyAuthority('READ_JOURNAL_PRIVILEGE')")
+	public String showAll(Model model, Principal principal){
+//		httpSession.setAttribute("simpleUser", userRepository.findUserByUsername(principal.getName()));
+		model.addAttribute("simpleUser", userRepository.findUserByUsername(principal.getName()));
 		model.addAttribute("journals", journalRepository.findAll());
 		model.addAttribute("search", new SearchObject());
 		return "index";
 	}
 
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAnyAuthority('ADMIN')")
+	@PreAuthorize("hasAnyAuthority('WRITE_JOURNAL_PRIVILEGE')")
 	public String updateJournal(@PathVariable("id")int id, Model model){
 		model.addAttribute("journal", journalRepository.findJournalById(id));
 		return "edit";
 	}
 
 	@PutMapping(value = "/{id}")
-	@PreAuthorize("hasAnyAuthority('ADMIN')")
+	@PreAuthorize("hasAnyAuthority('WRITE_JOURNAL_PRIVILEGE')")
 	public String saveUpdate(@PathVariable long id, @Valid @ModelAttribute("journal") Journal journal, BindingResult bindingResult, Model model){
 		if(bindingResult.hasErrors()){
 			model.addAttribute("journal", journal);
@@ -61,7 +64,7 @@ public class JournalController {
 
 
 	@GetMapping("/delete/{id}")
-	@PreAuthorize("hasAnyAuthority('ADMIN')")
+	@PreAuthorize("hasAnyAuthority('WRITE_JOURNAL_PRIVILEGE')")
 	public String delete(@PathVariable("id")int id, Model model){
 		journalRepository.delete(id);
 		model.addAttribute("journals", journalRepository.findAll());
@@ -69,7 +72,7 @@ public class JournalController {
 	}
 
 	@GetMapping("/view/{id}")
-	@PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+	@PreAuthorize("hasAnyAuthority('READ_JOURNAL_PRIVILEGE')")
 	public String viewJournal(@PathVariable("id")int id, Model model){
 		model.addAttribute("journal", journalRepository.findJournalById(id));
 		return "view";

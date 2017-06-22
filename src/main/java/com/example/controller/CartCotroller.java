@@ -7,6 +7,7 @@ import com.example.repository.JournalRepository;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class CartCotroller {
 
 
     @GetMapping("/add-to-card/{id}")
-    @Secured({"ADMIN", "USER"})
+    @PreAuthorize("hasAnyAuthority('WRITE_CART_PRIVILEGE')")
     public String addToCard(@PathVariable("id")int id, Model model){
         Journal addJournal = journalRepository.findJournalById(id);
         cartFacade.add(addJournal);
@@ -42,7 +43,7 @@ public class CartCotroller {
     }
 
     @GetMapping("/view-cart")
-    @Secured({"ADMIN", "USER"})
+    @PreAuthorize("hasAnyAuthority('READ_CART_PRIVILEGE')")
     public String cart(Model model){
         model.addAttribute("cart", cartFacade.getCart());
         model.addAttribute("totalPrice", cartFacade.getPrice());
@@ -50,6 +51,7 @@ public class CartCotroller {
     }
 
     @GetMapping("cart-pay")
+    @PreAuthorize("hasAnyAuthority('WRITE_CART_PRIVILEGE')")
     public String cartPay(Model model, Principal principal){
         User user = userRepository.findUserByUsername(principal.getName());
         if(!(user.getCash() >= cartFacade.getPrice())){
