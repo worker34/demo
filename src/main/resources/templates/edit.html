@@ -19,12 +19,13 @@
 					<li sec:authorize="hasAuthority('WRITE_USER_PRIVILEGE')"><a href="/users/singup" value="Register" class="btnRegister">Add User</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{'/users/update'}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
+					<li><a th:href="@{'/users/update/' + ${simpleUser.username}}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
 					<li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
 				</ul>
 			</div>
 		</nav>
 		<div class="container">
+			<h1 style="text-align:center;">Save Journal</h1>
 			<form th:action="@{'/journals/'+ ${journal.id}}" class="form-horizontal" role="form" th:object="${journal}" th:method="PUT">
 				<div class="form-group">
 					<label class="col-lg-2 control-label col-sm-2 col-md-2 col-xs-2" th:for="title">Title:</label>

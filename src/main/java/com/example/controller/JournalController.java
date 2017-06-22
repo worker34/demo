@@ -19,7 +19,6 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
-@Scope("session")
 @RequestMapping(value = {"/**", "/journals"})
 public class JournalController {
 

@@ -9,6 +9,8 @@
     "password": "12345",
     "confirmPassword": "12345",
     "roles": [
+      "READ_USER_PRIVILEGE",
+      "ADMINISTRATOR",
       "READ_JOURNAL_PRIVILEGE",
       "WRITE_JOURNAL_PRIVILEGE",
       "WRITE_USER_PRIVILEGE"
@@ -48,7 +50,7 @@
       "READ_CART_PRIVILEGE",
       "WRITE_CART_PRIVILEGE"
     ],
-    "cash": 2000.0,
+    "cash": 1185.0,
     "cart": null
   },
   {
@@ -61,6 +63,7 @@
     "password": "12345",
     "confirmPassword": "12345",
     "roles": [
+      "READ_USER_PRIVILEGE",
       "READ_JOURNAL_PRIVILEGE",
       "READ_CART_PRIVILEGE",
       "WRITE_CART_PRIVILEGE"

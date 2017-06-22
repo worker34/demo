@@ -38,18 +38,19 @@ public class UserController {
             model.addAttribute("person", user);
             return "singup";
         }
-        user.setRoles(new String[]{"READ_JOURNAL_PRIVILEGE", "READ_CART_PRIVILEGE", "WRITE_CART_PRIVILEGE"});
+        user.setRoles(new String[]{"READ_USER_PRIVILEGE", "READ_JOURNAL_PRIVILEGE", "READ_CART_PRIVILEGE", "WRITE_CART_PRIVILEGE"});
         System.out.println(user.getCash());
         userRepository.save(user);
         return "redirect:/";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/update/{username}")
     @PreAuthorize("hasAnyAuthority('READ_USER_PRIVILEGE')")
-    @PostAuthorize("#id == principal.username")
-    public String update(@PathVariable("id")int id, Model model, Principal principal){
+//    @PostAuthorize("returnObject.username == principal.username")
+    @PostAuthorize("(#username == principal.username) || hasAnyAuthority('ADMINISTRATOR')")
+    public String update(@PathVariable("username")String username, Model model, Principal principal){
         System.out.println("Update user: " + principal.getName());
-        model.addAttribute("person", userRepository.findUserById(id));
+        model.addAttribute("person", userRepository.findUserByUsername(username));
         return "singup";
     }
 

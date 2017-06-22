@@ -21,7 +21,7 @@
                     <li sec:authorize="hasAuthority('WRITE_USER_PRIVILEGE')"><a href="/users/singup" value="Register" class="btnRegister">Add User</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{'/users/update'}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
+                    <li><a th:href="@{'/users/update/' + ${simpleUser.username}}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
                     <li><a><form th:method="POST" th:action="@{/logout}"><button th:type="send">Log Out</button></form></a></li>
                 </ul>
             </div>

@@ -7,7 +7,6 @@ import javax.validation.constraints.*;
 /**
  * Created by Igor on 4/1/2017.
  */
-@Scope("session")
 public class User {
 
     private int id;

@@ -16,6 +16,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         if ((auth == null) || (targetDomainObject == null) || !(permission instanceof String)) {
             return false;
         }
+        System.out.println("First hasPermision()");
         final String targetType = targetDomainObject.getClass().getSimpleName().toUpperCase();
         return hasPrivilege(auth, targetType, permission.toString().toUpperCase());
     }
@@ -25,6 +26,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         if ((auth == null) || (targetType == null) || !(permission instanceof String)) {
             return false;
         }
+        System.out.println("Last hasPermision()");
         return hasPrivilege(auth, targetType.toUpperCase(), permission.toString().toUpperCase());
     }
 
