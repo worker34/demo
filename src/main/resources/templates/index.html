@@ -15,8 +15,8 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a th:href="@{'/'}">Home</a></li>
 				<li><a th:href="@{'/view-cart'}">View Cart</a></li>
-				<li sec:authorize="hasAuthority('WRITE_JOURNAL_PRIVILEGE')"><a th:href="@{'/journals/0'}">Add Journal</a></li>
-				<li sec:authorize="hasAuthority('WRITE_USER_PRIVILEGE')"><a href="/users/singup" value="Register" class="btnRegister">Add User</a></li>
+				<li sec:authorize="hasAuthority('JOURNAL_WRITE_PRIVILEGE')"><a th:href="@{'/journals/0'}">Add Journal</a></li>
+				<li sec:authorize="hasAuthority('USER_WRITE_PRIVILEGE')"><a href="/users/singup" value="Register" class="btnRegister">Add User</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a th:href="@{'/users/update/' + ${simpleUser.username}}"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span></a></li>
@@ -62,7 +62,7 @@
 						<td th:text="${journal.description}"></td>
 						<td th:text="${journal.price}"></td>
 						<td>
-							<div sec:authorize="hasAuthority('WRITE_JOURNAL_PRIVILEGE')">
+							<div sec:authorize="hasAuthority('JOURNAL_WRITE_PRIVILEGE')">
 								<a th:href="@{'/journals/' + ${journal.id}}" class="btn btn-primary" role="button">Edit</a><br/>
 								<a th:href="@{'/delete/' + ${journal.id}}"  class="btn btn-primary" role="button">Delete</a>
 							</div>

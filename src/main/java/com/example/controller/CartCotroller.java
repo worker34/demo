@@ -34,8 +34,10 @@ public class CartCotroller {
 
 
     @GetMapping("/add-to-card/{id}")
-    @PreAuthorize("hasAnyAuthority('WRITE_CART_PRIVILEGE')")
-    public String addToCard(@PathVariable("id")int id, Model model){
+//    @PreAuthorize("hasAnyAuthority('CART_WRITE_PRIVILEGE')")
+    @PreAuthorize("hasPermission('#id', 'CART', 'WRITE')")
+    public String addToCard(@PathVariable("id")int id, Model model, Principal principal){
+        model.addAttribute("simpleUser", userRepository.findUserByUsername(principal.getName()));
         Journal addJournal = journalRepository.findJournalById(id);
         cartFacade.add(addJournal);
         model.addAttribute("journal", addJournal);
@@ -43,16 +45,20 @@ public class CartCotroller {
     }
 
     @GetMapping("/view-cart")
-    @PreAuthorize("hasAnyAuthority('READ_CART_PRIVILEGE')")
-    public String cart(Model model){
+//    @PreAuthorize("hasAnyAuthority('CART_READ_PRIVILEGE')")
+    @PreAuthorize("hasPermission('id', 'CArt', 'READ')")
+    public String cart(Model model, Principal principal){
+        model.addAttribute("simpleUser", userRepository.findUserByUsername(principal.getName()));
         model.addAttribute("cart", cartFacade.getCart());
         model.addAttribute("totalPrice", cartFacade.getPrice());
         return "cart";
     }
 
     @GetMapping("cart-pay")
-    @PreAuthorize("hasAnyAuthority('WRITE_CART_PRIVILEGE')")
+//    @PreAuthorize("hasAnyAuthority('CART_WRITE_PRIVILEGE')")
+    @PreAuthorize("hasPermission('id', 'Cart', 'WRITE')")
     public String cartPay(Model model, Principal principal){
+        model.addAttribute("simpleUser", userRepository.findUserByUsername(principal.getName()));
         User user = userRepository.findUserByUsername(principal.getName());
         if(!(user.getCash() >= cartFacade.getPrice())){
             model.addAttribute("msg", "You not have suficient money");

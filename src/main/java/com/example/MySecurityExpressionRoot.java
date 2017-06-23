@@ -28,8 +28,6 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
     public final String delete = "delete";
     public final String admin = "administration";
 
-    //
-
     private Object filterObject;
     private Object returnObject;
 

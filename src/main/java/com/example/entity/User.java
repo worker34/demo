@@ -3,6 +3,7 @@ package com.example.entity;
 import org.springframework.context.annotation.Scope;
 
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * Created by Igor on 4/1/2017.
@@ -41,13 +42,13 @@ public class User {
     @NotNull(message = "Password Coonfirmation is required")
     private String confirmPassword;
 
-    private String[] roles;
-
     @Min(value = 0, message = "Cash Need to be great than 0")
     @Digits(integer = 5 /*precision*/, fraction = 4 /*scale*/, message = "Please check your Cash")
     private Float cash;
 
     private Cart cart;
+
+    private List<Role> roles;
 
     public int getId() {
         return id;
@@ -113,11 +114,11 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public String[] getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String[] roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
