@@ -39,7 +39,6 @@ public class Journal {
 	private int price;
 
 	public Journal(){
-		System.out.println(repeat);
 	}
 
 	public int getRepeat() {

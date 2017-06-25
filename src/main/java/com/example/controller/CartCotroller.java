@@ -51,6 +51,7 @@ public class CartCotroller {
         model.addAttribute("simpleUser", userRepository.findUserByUsername(principal.getName()));
         model.addAttribute("cart", cartFacade.getCart());
         model.addAttribute("totalPrice", cartFacade.getPrice());
+        System.out.println(cartFacade.getCart().getRepeat());
         return "cart";
     }
 

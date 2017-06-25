@@ -44,7 +44,9 @@ public class JournalController {
 	@PreAuthorize("hasPermission('#id', 'Journal', 'WRITE')")
 	public String updateJournal(@PathVariable("id")int id, Model model, Principal principal){
 		model.addAttribute("simpleUser", userRepository.findUserByUsername(principal.getName()));
-		model.addAttribute("journal", journalRepository.findJournalById(id));
+		Journal journal = journalRepository.findJournalById(id);
+		System.out.println(journal.getRepeat());
+		model.addAttribute("journal", journal);
 		return "edit";
 	}
 

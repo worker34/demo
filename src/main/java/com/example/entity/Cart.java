@@ -13,6 +13,9 @@ public class Cart implements List<Journal> {
 
     private float totalPrice;
 
+    @MyAnnotation(min = 4, max = 15)
+    private int repeat;
+
     public Cart(){
         journals = new ArrayList();
     }
@@ -28,6 +31,14 @@ public class Cart implements List<Journal> {
             }
         }
         return map;
+    }
+
+    public int getRepeat() {
+        return repeat;
+    }
+
+    public void setRepeat(int repeat) {
+        this.repeat = repeat;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.entity.MyAnnotationAnnotationBeanPostProcessor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -15,5 +17,10 @@ public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
         final CustomMethodSecurityExpressionHandler expressionHandler = new CustomMethodSecurityExpressionHandler();
         expressionHandler.setPermissionEvaluator(new CustomPermissionEvaluator());
         return expressionHandler;
+    }
+
+    @Bean
+    public MyAnnotationAnnotationBeanPostProcessor myAnnotationAnnotationBeanPostProcessor(){
+        return new MyAnnotationAnnotationBeanPostProcessor();
     }
 }
