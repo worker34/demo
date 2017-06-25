@@ -8,6 +8,9 @@ public class Journal {
 	@Max(value=100)
 	private int id;
 
+	@MyAnnotation(min = 2, max = 7)
+	private int repeat;
+
 	@NotNull(message = "Title of the journal not maybe null")
 	@Size(min=4, max=30, message="Title of journal must be between 4 and 30 characters long.")
 	private String title;
@@ -34,7 +37,19 @@ public class Journal {
 	@Min(value=1, message="Check price.")
 	@Max(value=1980, message="Check price.")
 	private int price;
-	
+
+	public Journal(){
+		System.out.println(repeat);
+	}
+
+	public int getRepeat() {
+		return repeat;
+	}
+
+	public void setRepeat(int repeat) {
+		this.repeat = repeat;
+	}
+
 	public int getId() {
 		return id;
 	}

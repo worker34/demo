@@ -37,21 +37,25 @@
                     <th>ISSN</th>
                     <th>Price</th>
                     <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="journal:${cart}">
-                    <td th:text="${journal.id}"></td>
-                    <td th:text="${journal.title}"></td>
-                    <td th:text="${journal.author}"></td>
-                    <td th:text="${journal.publisher}"></td>
-                    <td th:text="${journal.year}"></td>
-                    <td th:text="${journal.issn}"></td>
-                    <td th:text="${journal.price}"></td>
-                    <td th:text="${journal.description}"></td>
+                <tr th:each="entrySet:${cart.getMap()}">
+                    <td th:text="${entrySet.key.id}"></td>
+                    <td th:text="${entrySet.key.title}"></td>
+                    <td th:text="${entrySet.key.author}"></td>
+                    <td th:text="${entrySet.key.publisher}"></td>
+                    <td th:text="${entrySet.key.year}"></td>
+                    <td th:text="${entrySet.key.issn}"></td>
+                    <td th:text="${entrySet.key.price}"></td>
+                    <td th:text="${entrySet.key.description}"></td>
+                    <td th:text="${entrySet.value}"></td>
+                    <th th:text="${entrySet.value * entrySet.key.price + '$'}"></th>
                 </tr>
                 <tr>
-                    <td th:colspan="7">
+                    <td th:colspan="9">
                         Total: <a th:text="${totalPrice}"></a>$
                     </td>
                     <td>

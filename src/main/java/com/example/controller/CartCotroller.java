@@ -62,9 +62,12 @@ public class CartCotroller {
         User user = userRepository.findUserByUsername(principal.getName());
         if(!(user.getCash() >= cartFacade.getPrice())){
             model.addAttribute("msg", "You not have suficient money");
+            model.addAttribute("cart", cartFacade.getCart());
+            model.addAttribute("totalPrice", cartFacade.getPrice());
         }else{
             user.setCash(user.getCash() - cartFacade.getPrice());
             userRepository.save(user);
+            model.addAttribute("cart", cartFacade.getCart());
             model.addAttribute("msg", cartFacade.cartPay());
         }
         return "cart";

@@ -17,6 +17,19 @@ public class Cart implements List<Journal> {
         journals = new ArrayList();
     }
 
+    public Map<Journal, Integer> getMap(){
+        Map<Journal, Integer> map = new HashMap<>();
+        for(Journal journal: journals){
+            if(map.containsKey(journal)){
+                int count = map.get(journal);
+                map.put(journal, count + 1);
+            }else{
+                map.put(journal, 1);
+            }
+        }
+        return map;
+    }
+
     @Override
     public int size() {
         return journals.size();
