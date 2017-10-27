@@ -1,107 +1,56 @@
 package com.example.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
 public class Journal {
 
-	@Min(value=0)
-	@Max(value=100)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@MyAnnotation(min = 2, max = 7)
-	private int repeat;
 
 	@NotNull(message = "Title of the journal not maybe null")
 	@Size(min=4, max=30, message="Title of journal must be between 4 and 30 characters long.")
+	@Column(name = "title")
 	private String title;
 
 	@NotNull(message = "Author of the journal not maybe null ")
 	@Size(min=4, max=20, message="Invalid author name.")
+	@Column(name = "author")
 	private String author;
 
 	@Min(value=1, message="The journal are many pages.")
 	@Max(value=2000, message="The journal are many pages.")
+	@Column(name = "pages")
 	private int pages;
 
 	@NotNull(message = "Publisher of the journal not maybe null ")
 	@Size(min=4, max=20, message="Invalid publisher name.")
+	@Column(name = "publicher")
 	private String publisher;
 
 	@Min(value=1980, message="Invalid year.")
 	@Max(value=2017, message="Invalid year.")
+	@Column(name = "year")
 	private int year;
 
+	@Column(name = "issn")
 	private String issn;
+
+	@Column(name = "description")
 	private String description;
 
 	@Min(value=1, message="Check price.")
 	@Max(value=1980, message="Check price.")
 	private int price;
-
-	public Journal(){
-		System.out.println(repeat);
-	}
-
-	public int getRepeat() {
-		return repeat;
-	}
-
-	public void setRepeat(int repeat) {
-		this.repeat = repeat;
-	}
-
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-	public int getPages() {
-		return pages;
-	}
-	public void setPages(int pages) {
-		this.pages = pages;
-	}
-	public String getPublisher() {
-		return publisher;
-	}
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
-	public int getYear() {
-		return year;
-	}
-	public void setYear(int year) {
-		this.year = year;
-	}
-	public String getIssn() {
-		return issn;
-	}
-	public void setIssn(String issn) {
-		this.issn = issn;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
 }
